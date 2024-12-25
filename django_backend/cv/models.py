@@ -4,9 +4,9 @@ from django.contrib.postgres.fields import ArrayField
 
 class CV(models.Model):
     id = models.AutoField(primary_key=True)
-    image = models.ImageField(upload_to="images/", default='default.jpg')  # Provide a default value
-    image_pred = models.ImageField(upload_to="images/", default='default_pred.jpg')  # Provide a default value
-    text = ArrayField(models.CharField(max_length=255), blank=True, default=list)  # First array of strings
+    image = models.ImageField(upload_to="images/cv")  # Provide a default value
+    image_pred = models.ImageField(upload_to="images/cv")  # Provide a default value
+    text = ArrayField(models.TextField(blank=True, default=''), blank=True, default=list)  # First array of strings
     created_at = models.DateTimeField(auto_now_add=True)  # Date and time when the record was created
     updated_at = models.DateTimeField(auto_now=True)  # Date and time when the record was last updated
 
