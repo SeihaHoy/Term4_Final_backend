@@ -9,6 +9,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install system dependencies for OpenCV, Tesseract, and YOLO
 RUN apt-get update && apt-get install -y \
+    wget \
     netcat \
     build-essential \
     cmake \
@@ -27,6 +28,12 @@ RUN apt-get update && apt-get install -y \
     tesseract-ocr \
     && apt-get clean
 
+# Download the Khmer.traineddata file
+RUN wget -P /usr/share/tesseract-ocr/4.00/tessdata/ https://github.com/tesseract-ocr/tessdata/raw/main/script/Khmer.traineddata
+
+# Set the TESSDATA_PREFIX environment variable
+ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata/
+
 # Upgrade pip
 RUN pip install --upgrade pip
 
@@ -36,6 +43,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Install pytesseract and ultralytics
 RUN pip install --no-cache-dir pytesseract ultralytics
+
+# Create media directory
+RUN mkdir -p /usr/src/django_backend/media
 
 # Copy the entrypoint script and make it executable
 COPY ./entrypoint.sh .
