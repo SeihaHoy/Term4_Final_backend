@@ -16,7 +16,8 @@ from ultralytics import YOLO
 
 # Load YOLO model
 def load_yolo_model():
-    model = YOLO("/usr/src/django_backend/cv/yolo11_100epoch.pt")  # Adjust path as necessary
+    model = YOLO("/usr/src/django_backend/cv/yolov8_100epv6.pt")  # Adjust path as necessary
+    
     return model
 
 # Detect text using YOLO
