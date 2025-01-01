@@ -13,23 +13,17 @@ To run this project using Docker, follow the steps below:
 1. **Clone the Repository**
 
     ```sh
-    git clone https://github.com/yourusername/Term4_Final.git
+    https://github.com/SeihaHoy/Term4_Final_backend.git
     cd Term4_Final
     ```
 
 2. **Build the Docker Image**
 
     ```sh
-    docker build -t term4_final_image .
+    docker-compose up --build
     ```
 
-3. **Run the Docker Container**
-
-    ```sh
-    docker run -d -p 8000:8000 --name term4_final_container term4_final_image
-    ```
-
-4. **Access the Application**
+3. **Access the Application**
 
     Open your web browser and go to `http://localhost:8000` to access the application.
 
